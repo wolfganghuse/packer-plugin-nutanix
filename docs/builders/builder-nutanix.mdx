@@ -1,0 +1,88 @@
+---
+description: >
+  The nutanix builder is used to create images on Nutanix Cloud Platform
+page_title: Nutanix - Builders
+nav_title: Nutanix
+---
+
+# Nutanix
+
+Type: `nutanix`
+
+<!--
+  Include a short description about the builder. This is a good place
+  to call out what the builder does, and any requirements for the given
+  builder environment. See https://www.packer.io/docs/builders/null
+-->
+
+The builder builds a virtual machine by creating a new virtual machine from existing Image or Boot-ISO, customizing the OS and provisioning software within the OS, then shutting it down. The result of the Nutanix builder is a qcow2-image which is placed within the Image Service of the Prism Central Instance.
+
+<!-- Builder Configuration Fields -->
+
+### Required
+
+- `nutanix_endpoint` (string) - Endpoint
+
+- `nutanix_username` (string) - Username
+
+- `nutanix_password` (string) - Password
+
+- `nutanix_insecure` (bool) - Insecure
+
+- `nutanix_port` (int32) - Port
+
+- `os_type` (string) - OS Type
+
+
+<!--
+  Optional Configuration Fields
+
+  Configuration options that are not required or have reasonable defaults
+  should be listed under the optionals section. Defaults values should be
+  noted in the description of the field
+-->
+
+### Optional
+
+
+
+- `vm_name` (string) - VM Name
+
+- `boot_type` (string) - Boot Type
+
+- `vm_disks` ([]VmDisk) - Vm Disks
+
+- `vm_nics` ([]VmNIC) - Vm NICs
+
+- `image_name` (string) - Image Name
+
+- `cluster_uuid` (string) - Cluster UUID
+
+- `cluster_name` (string) - Cluster Name
+
+- `cpu` (int64) - CPU
+
+- `memory_mb` (int64) - Memory MB
+
+- `user_data` (string) - User Data
+
+
+<!--
+  A basic example on the usage of the builder. Multiple examples
+  can be provided to highlight various build configurations.
+
+-->
+### Example Usage
+
+
+```hcl
+ source "scaffolding" "example" {
+   mock = "bird"
+ }
+
+ build {
+   sources = ["source.scaffolding.example"]
+ }
+```
+
+

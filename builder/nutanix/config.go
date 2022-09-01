@@ -1,4 +1,5 @@
 //go:generate packer-sdc mapstructure-to-hcl2 -type Config,ClusterConfig,VmConfig,VmDisk,VmNIC
+//go:generate packer-sdc struct-markdown
 
 package nutanix
 
