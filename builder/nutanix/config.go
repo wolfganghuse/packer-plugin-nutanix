@@ -8,6 +8,7 @@ import (
 	"log"
 	"time"
 
+	"github.com/hashicorp/packer-plugin-sdk/bootcommand"
 	"github.com/hashicorp/packer-plugin-sdk/common"
 	"github.com/hashicorp/packer-plugin-sdk/communicator"
 	"github.com/hashicorp/packer-plugin-sdk/multistep/commonsteps"
@@ -41,6 +42,7 @@ const (
 type Config struct {
 	common.PackerConfig            `mapstructure:",squash"`
 	CommConfig                     communicator.Config `mapstructure:",squash"`
+	bootcommand.VNCConfig 		   `mapstructure:",squash"`
 	commonsteps.CDConfig           `mapstructure:",squash"`
 	shutdowncommand.ShutdownConfig `mapstructure:",squash"`
 	ClusterConfig                  `mapstructure:",squash"`
@@ -52,7 +54,8 @@ type Config struct {
 	ImageExport                    bool          `mapstructure:"image_export" json:"image_export" required:"false"`
 	WaitTimeout                    time.Duration `mapstructure:"ip_wait_timeout" json:"ip_wait_timeout" required:"false"`
 	VmForceDelete                  bool          `mapstructure:"vm_force_delete" json:"vm_force_delete" required:"false"`
-
+	VNCEnable                      bool          `mapstructure:"vnc_enable" required:"false"`
+	VNCInsecure                    bool          `mapstructure:"vnc_insecure" required:"false"`
 	ctx interpolate.Context
 }
 
